@@ -1,12 +1,12 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 import { AppComponent } from "./app.component";
 import { CurrentChallengeComponent } from "./challenges/current-challenge.component";
+import { StackComponent } from './layouts/stack/stack.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
-// import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -21,7 +21,8 @@ import { CurrentChallengeComponent } from "./challenges/current-challenge.compon
     ],
     declarations: [
         AppComponent,
-        CurrentChallengeComponent
+        CurrentChallengeComponent,
+        StackComponent
     ],
     providers: [],
     schemas: [
