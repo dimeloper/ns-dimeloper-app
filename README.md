@@ -1,6 +1,6 @@
 # Dimeloper's NativeScript Demo App
 
-Will be developing this app to apply my learnings throughout my NativeScript learning journey.
+I will be developing this app to apply my learnings throughout my NativeScript learning journey.
 
 ## NativeScript Notes
 
@@ -15,6 +15,12 @@ Will be developing this app to apply my learnings throughout my NativeScript lea
 ### Run on Android
 
 `tns run android --bundle`
+
+### Create NativeScript component
+
+We can use the Angular CLI commands like: `ng g c componentName`, just make sure that @nativescript/schematics is installed globally.
+
+To install: `yarn global add @nativescript/schematics`
 
 ## Suggested Nativescript Course
 
