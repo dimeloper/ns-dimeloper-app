@@ -25,7 +25,9 @@ Will be developing this app to apply my learnings throughout my NativeScript lea
 [Please file an issue](https://github.com/dimeloper/ns-dimeloper-app/issues)!
 
 Or get in touch with me:
+
 - [Kiriakakis.com](https://kiriakakis.com)
+
 - [Instagram Profile](https://instagram.com/dimeloper_)
 
 ## License
