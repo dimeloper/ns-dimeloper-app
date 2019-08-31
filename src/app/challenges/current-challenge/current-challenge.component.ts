@@ -7,14 +7,9 @@ import { Component, OnInit } from '@angular/core';
     moduleId: module.id
 })
 export class CurrentChallengeComponent implements OnInit {
-    challengeDescription: string = '';
-    currentChallenge: string = '';
+    constructor() {
+    }
 
-    constructor() { }
-
-    ngOnInit() { }
-
-    onSetChallenge() {
-        this.currentChallenge = this.challengeDescription;
+    ngOnInit() {
     }
 }
