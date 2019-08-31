@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'ns-current-challenge',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
     moduleId: module.id
 })
 export class CurrentChallengeComponent implements OnInit {
+    @Input() currentChallenge: string;
+
     constructor() {
     }
 
