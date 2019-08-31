@@ -1,8 +1,18 @@
-<StackLayout>
+<GridLayout rows="auto,*" columns="2*,*">
     <TextField
-        hint="Challenge title"
-        [(ngModel)]="challengeDescription">
+            row="0"
+            col="0"
+            class="form-control"
+            hint="Challenge title"
+            [(ngModel)]="challengeDescription">
     </TextField>
-    <Button (tap)="onSetChallenge()" text="Set Challenge"></Button>
-    <Label class="title" [text]="currentChallenge"></Label>
-</StackLayout>
+    <Button class="btn"
+            row="0"
+            col="1"
+            (tap)="onSetChallenge()"
+            text="Set Challenge"></Button>
+    <Label row="1"
+           col="0"
+           colSpan="2"
+           class="title" [text]="currentChallenge"></Label>
+</GridLayout>
