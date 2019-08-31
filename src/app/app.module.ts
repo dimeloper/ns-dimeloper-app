@@ -7,6 +7,7 @@ import { StackComponent } from './layouts/stack/stack.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { FlexboxComponent } from './layouts/flexbox/flexbox.component';
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -22,7 +23,8 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
     declarations: [
         AppComponent,
         CurrentChallengeComponent,
-        StackComponent
+        StackComponent,
+        FlexboxComponent
     ],
     providers: [],
     schemas: [
