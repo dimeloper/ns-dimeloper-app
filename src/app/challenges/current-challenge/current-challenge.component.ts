@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ItemEventData } from 'tns-core-modules/ui/list-view';
 
 @Component({
     selector: 'ns-current-challenge',
@@ -13,5 +14,9 @@ export class CurrentChallengeComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    onItemTap(args: ItemEventData) {
+        console.log(args);
     }
 }

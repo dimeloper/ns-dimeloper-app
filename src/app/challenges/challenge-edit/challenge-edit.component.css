@@ -1,4 +1,8 @@
 /* Add mobile styles for the component here.  */
+FlexboxLayout {
+    height: 40;
+}
+
 TextField {
     width: 66%;
 }
