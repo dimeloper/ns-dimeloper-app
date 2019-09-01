@@ -16,6 +16,14 @@ I will be developing this app to apply my learnings throughout my NativeScript l
 
 `tns run android --bundle`
 
+### Debug on iOS
+
+`tns debug ios -bundle`
+
+### Debug on Android
+
+`tns debug android --bundle`
+
 ### Create NativeScript component
 
 We can use the Angular CLI commands like: `ng g c componentName`, just make sure that @nativescript/schematics is installed globally.
