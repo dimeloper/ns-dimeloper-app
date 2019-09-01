@@ -1,6 +1,9 @@
-<StackLayout>
-    <Label colSpan="2"
-           class="title"
-           horizontalAlignment="center"
-           [text]="currentChallenge"></Label>
-</StackLayout>
+<ScrollView>
+    <StackLayout>
+        <Label colSpan="2"
+               class="title"
+               horizontalAlignment="center"
+               *ngFor="let challenge of challenges"
+               [text]="challenge"></Label>
+    </StackLayout>
+</ScrollView>

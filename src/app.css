@@ -12,9 +12,9 @@ refer to http://docs.nativescript.org/ui/theme.
 @import '~nativescript-theme-core/css/core.light.css';
 
 .btn {
-    background: #7c015d;
+    background: dodgerblue;
     border-width: 1;
-    border-color: #7c015d;
+    border-color: dodgerblue;
     color: white;
     width: 100%;
     padding: 10 10;
@@ -23,7 +23,7 @@ refer to http://docs.nativescript.org/ui/theme.
 }
 
 .form-control {
-    border-bottom-color: #7c015d;
+    border-bottom-color: dodgerblue;
     border-bottom-width: 2;
     padding: 5 10;
 }

@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
     moduleId: module.id
 })
 export class CurrentChallengeComponent implements OnInit {
-    @Input() currentChallenge: string;
+    @Input() challenges: string[] = [];
 
     constructor() {
     }
