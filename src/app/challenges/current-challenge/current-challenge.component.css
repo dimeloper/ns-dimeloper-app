@@ -5,3 +5,7 @@
     text-align: center;
     padding: 10;
 }
+
+.item-wrapper {
+    padding: 0 10 20 10;
+}
