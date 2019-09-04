@@ -1,16 +1,14 @@
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 
-import { AppComponent } from "./app.component";
-import { CurrentChallengeComponent } from "./challenges/current-challenge/current-challenge.component";
-import { StackComponent } from './layouts/stack/stack.component';
-
+import { AppComponent } from './app.component';
+import { CurrentChallengeComponent } from './challenges/current-challenge/current-challenge.component';
 // Uncomment and add to NgModule imports if you need to use two-way binding
-import { NativeScriptFormsModule } from "nativescript-angular/forms";
-import { FlexboxComponent } from './layouts/flexbox/flexbox.component';
-import { GridComponent } from './layouts/grid/grid.component';
-import { AbsoluteComponent } from './layouts/absolute/absolute.component';
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { ChallengeEditComponent } from './challenges/challenge-edit/challenge-edit.component';
+import { AuthComponent } from './auth/auth.component';
+import { TodayComponent } from './challenges/today/today.component';
+import { AppRoutingModule } from '~/app/app-routing.module';
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -20,17 +18,16 @@ import { ChallengeEditComponent } from './challenges/challenge-edit/challenge-ed
         AppComponent
     ],
     imports: [
+        AppRoutingModule,
         NativeScriptModule,
         NativeScriptFormsModule,
     ],
     declarations: [
         AppComponent,
+        AuthComponent,
         CurrentChallengeComponent,
-        StackComponent,
-        FlexboxComponent,
-        GridComponent,
-        AbsoluteComponent,
-        ChallengeEditComponent
+        ChallengeEditComponent,
+        TodayComponent
     ],
     providers: [],
     schemas: [
@@ -40,4 +37,5 @@ import { ChallengeEditComponent } from './challenges/challenge-edit/challenge-ed
 /*
 Pass your application module to the bootstrapModule function located in main.ts to start your app
 */
-export class AppModule { }
+export class AppModule {
+}
