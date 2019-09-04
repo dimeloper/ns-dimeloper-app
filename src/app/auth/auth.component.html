@@ -1,3 +1,6 @@
 <StackLayout>
-    <Button text="auth works!" class="btn btn-primary" (tap)="onSignin()"></Button>
+    <Button text="auth works!"
+            class="btn btn-primary"
+            nsRouterLink="/today"
+            [clearHistory]="true"></Button>
 </StackLayout>
