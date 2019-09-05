@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ns-today',
   templateUrl: './today.component.html',
   styleUrls: ['./today.component.css']
 })
-export class TodayComponent implements OnInit {
+export class TodayComponent {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
 
 }
