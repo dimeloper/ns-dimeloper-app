@@ -1,9 +1,9 @@
-<ListView [items]="challenges" (itemTap)="onItemTap($event)" iosEstimatedRowHeight="65">
-    <ng-template let-challenge="item" let-i="index">
-        <GridLayout rows="40,20" columns="50,*" class="item-wrapper">
-            <Label [text]="i" row="0" col="0" rowSpan="2"></Label>
-            <Label [text]="challenge" row="0" col="1" rowSpan="2"></Label>
-            <Label text="Item content row 2" row="1" col="1" rowSpan="2"></Label>
-        </GridLayout>
-    </ng-template>
-</ListView>
+<ActionBar title="Current Challenge" (loaded)="onLoadedActionBar()">
+    <NavigationButton text="Back" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+<StackLayout>
+    <Label class="title"
+           text="The current challenge" horizontalAlignment="center">
+    </Label>
+    <Button text="Edit" (tap)="onEdit()"></Button>
+</StackLayout>
