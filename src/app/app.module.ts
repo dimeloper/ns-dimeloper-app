@@ -11,6 +11,7 @@ import { TodayComponent } from './challenges/today/today.component';
 import { AppRoutingModule } from '~/app/app-routing.module';
 import { ActionBarComponent } from './shared/ui/action-bar/action-bar.component';
 import { ChallengeTabsComponent } from './challenges/challenge-tabs/challenge-tabs.component';
+import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular';
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -23,6 +24,7 @@ import { ChallengeTabsComponent } from './challenges/challenge-tabs/challenge-ta
     AppRoutingModule,
     NativeScriptModule,
     NativeScriptFormsModule,
+    NativeScriptUISideDrawerModule
   ],
   declarations: [
     AppComponent,

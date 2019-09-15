@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { isAndroid } from 'tns-core-modules/platform';
 import { Page } from 'tns-core-modules/ui/page';
 import { RouterExtensions } from 'nativescript-angular';
+import { UiService } from '~/app/shared/ui/ui.service';
 
 declare var android;
 
@@ -14,15 +15,25 @@ export class ActionBarComponent {
   @Input() title: string;
   @Input() showBackButton = true;
 
-  constructor(private page: Page, private router: RouterExtensions) {
+  constructor(private page: Page,
+              private router: RouterExtensions,
+              private uiService: UiService) {
   }
 
   get canGoBack() {
     return this.router.canGoBack() && this.showBackButton;
   }
 
+  get osIsAndroid() {
+    return isAndroid;
+  }
+
   onGoBack() {
     this.router.backToPreviousPage();
+  }
+
+  onToggleMenu() {
+    this.uiService.toggleDrawer();
   }
 
   onLoadedActionBar() {
