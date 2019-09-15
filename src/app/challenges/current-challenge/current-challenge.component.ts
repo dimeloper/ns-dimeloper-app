@@ -13,6 +13,8 @@ export class CurrentChallengeComponent {
   }
 
   onEdit() {
-    this.router.navigate(['/edit-challenge'], {transition: {name: 'slideLeft'}});
+    this.router.navigate(['/challenges/edit'], {
+      transition: {name: 'slideLeft'}
+    });
   }
 }

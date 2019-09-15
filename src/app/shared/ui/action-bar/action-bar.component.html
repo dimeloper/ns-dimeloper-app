@@ -4,10 +4,10 @@
                       (tap)="onGoBack()"
                       android.systemIcon="ic_menu_back"
     ></NavigationButton>
-    <NavigationButton *ngIf="osIsAndroid"
+    <NavigationButton *ngIf="osIsAndroid && hasMenu"
                       icon="res://menu_black"
-    (tap)="onToggleMenu()"></NavigationButton>
-    <ActionItem ios.position="left" *ngIf="!osIsAndroid">
+                      (tap)="onToggleMenu()"></NavigationButton>
+    <ActionItem ios.position="left" *ngIf="!osIsAndroid && hasMenu">
         <Label text="MENU"></Label>
     </ActionItem>
 </ActionBar>

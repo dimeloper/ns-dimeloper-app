@@ -14,23 +14,33 @@ const routes: Routes = [
   },
   {
     path: 'challenges',
-    component: ChallengeTabsComponent,
     children: [
       {
-        path: 'current-challenge',
-        component: CurrentChallengeComponent,
-        outlet: 'currentChallenge'
+        path: 'tabs',
+        component: ChallengeTabsComponent,
+        children: [
+          {
+            path: 'current-challenge',
+            component: CurrentChallengeComponent,
+            outlet: 'currentChallenge'
+          },
+          {
+            path: 'today',
+            component: TodayComponent,
+            outlet: 'today'
+          },
+        ]
       },
       {
-        path: 'today',
-        component: TodayComponent,
-        outlet: 'today'
+        path: ':mode',
+        component: ChallengeEditComponent
+      },
+      {
+        path: '',
+        redirectTo: '/challenges/tabs',
+        pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: 'edit-challenge',
-    component: ChallengeEditComponent
   },
 
 ];
