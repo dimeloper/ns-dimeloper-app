@@ -12,6 +12,7 @@ import { AppRoutingModule } from '~/app/app-routing.module';
 import { ActionBarComponent } from './shared/ui/action-bar/action-bar.component';
 import { ChallengeTabsComponent } from './challenges/challenge-tabs/challenge-tabs.component';
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular';
+import { DayModalComponent } from './challenges/day-modal/day-modal.component';
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -27,13 +28,17 @@ import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angul
     NativeScriptUISideDrawerModule
   ],
   declarations: [
+    ActionBarComponent,
     AppComponent,
     AuthComponent,
-    CurrentChallengeComponent,
     ChallengeEditComponent,
-    TodayComponent,
-    ActionBarComponent,
-    ChallengeTabsComponent
+    ChallengeTabsComponent,
+    CurrentChallengeComponent,
+    DayModalComponent,
+    TodayComponent
+  ],
+  entryComponents: [
+    DayModalComponent
   ],
   providers: [],
   schemas: [
