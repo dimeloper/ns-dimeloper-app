@@ -1,12 +1,49 @@
 @import "../../../theme/colors";
 
-.title {
-  color: $color-primary;
-  font-weight: bold;
-  text-align: center;
-  padding: 10;
+.page {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20;
 }
 
-.item-wrapper {
-  padding: 0 10 20 10;
+.calendar {
+}
+
+.week-day-label {
+  color: $color-secondary;
+  font-weight: bold;
+  margin: 15 0;
+  text-align: center;
+}
+
+.day {
+  justify-content: center;
+  align-items: center;
+  color: $color-primary;
+  width: 50;
+  height: 50;
+  margin: 10;
+  padding: 10;
+  border-color: $color-primary;
+  border-width: 1;
+  border-radius: 50%;
+}
+
+.completed {
+  background: $color-success;
+  border-color: $color-success;
+  color: $color-white;
+}
+
+.failed {
+  background: $color-success;
+  border-color: $color-success;
+  color: $color-white;
+}
+
+.not-settable {
+  background: $color-grey-light;
+  border-color: $color-grey-light;
+  color: $color-grey-dark;
 }

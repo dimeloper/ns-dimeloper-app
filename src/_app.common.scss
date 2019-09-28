@@ -11,10 +11,16 @@ ActionBar {
   color: white;
 }
 
+.h1 {
+  color: $color-primary;
+  font-weight: bold;
+}
+
 .form {
   align-items: center;
   height: 50%;
   flex-direction: column;
+  justify-content: center;
 }
 
 .input-field {
@@ -33,7 +39,7 @@ ActionBar {
 }
 
 .drawer-container {
-  background: linear-gradient(140deg, #2b0c72, #5c3fa0);
+  background: linear-gradient(140deg, $color-primary, $color-secondary);
   flex-direction: column;
   justify-content: center;
   align-items: center;
