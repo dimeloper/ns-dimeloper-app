@@ -10,4 +10,7 @@ export class TodayComponent {
   constructor() {
   }
 
+  onChallengeActionSelected(action: 'complete' | 'fail' | 'cancel') {
+    console.log(action);
+  }
 }

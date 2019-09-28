@@ -5,12 +5,14 @@ import { ChallengeTabsComponent } from '~/app/challenges/challenge-tabs/challeng
 import { CurrentChallengeComponent } from '~/app/challenges/current-challenge/current-challenge.component';
 import { SharedModule } from '~/app/shared/shared.module';
 import { TodayComponent } from '~/app/challenges/today/today.component';
+import { ChallengeActionsModule } from '~/app/challenges/challenge-actions/challenge-actions.module';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
+    ChallengeActionsModule,
     ChallengesRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     ChallengeTabsComponent,

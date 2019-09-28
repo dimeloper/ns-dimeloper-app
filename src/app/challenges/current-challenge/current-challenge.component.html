@@ -29,7 +29,8 @@
                    [text]="weekDay" row="0" [col]="i"></Label>
             <FlexboxLayout class="day" *ngFor="let day of days; let i = index"
                            [row]="getRow(i, day)"
-                           [col]="day.dayInWeek">
+                           [col]="day.dayInWeek"
+                           (tap)="onChangeStatus()">
                 <Label [text]="day.dayInMonth"></Label>
             </FlexboxLayout>
         </GridLayout>

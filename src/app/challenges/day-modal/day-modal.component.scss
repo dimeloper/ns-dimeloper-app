@@ -1,5 +1,8 @@
 /* Add mobile styles for the component here.  */
+@import "../../../theme/colors";
+
 FlexboxLayout {
+  background: $color-white;
   flex-direction: column;
   justify-content: center;
   align-items: center;
