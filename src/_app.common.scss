@@ -6,6 +6,10 @@ $btn-color: $color-primary;
 
 @import '~nativescript-theme-core/scss/index';
 
+.fa {
+  font-family: 'FontAwesome', 'Font-Awesome';
+}
+
 ActionBar {
   background-color: $color-primary;
   color: white;
