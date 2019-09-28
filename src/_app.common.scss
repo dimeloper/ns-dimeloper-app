@@ -1,0 +1,31 @@
+@import '~nativescript-theme-core/scss/light';
+
+/* Here we can overwrite theme variables */
+$primary: #7c015d;
+$secondary: #2b0c72;
+$disabled: #ccc;
+
+$btn-color: $primary;
+
+@import '~nativescript-theme-core/scss/index';
+
+.btn {
+  width: 100%;
+  padding: 10 10;
+  border-radius: 30%;
+  margin: 5 0;
+}
+
+.form-control {
+  border-bottom-color: dodgerblue;
+  border-bottom-width: 2;
+  padding: 5 10;
+}
+
+.drawer-container {
+  background: linear-gradient(140deg, #2b0c72, #5c3fa0);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20;
+}

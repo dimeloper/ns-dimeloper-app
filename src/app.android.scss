@@ -1,0 +1,9 @@
+@import "./app.common";
+@import "~nativescript-theme-core/scss/platforms/index.android";
+
+.btn {
+  background: dodgerblue;
+  border-width: 1;
+  border-color: dodgerblue;
+  color: white;
+}

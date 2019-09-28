@@ -1,8 +1,0 @@
-@import "./app.common.css";
-
-.btn {
-    background: dodgerblue;
-    border-width: 1;
-    border-color: dodgerblue;
-    color: white;
-}

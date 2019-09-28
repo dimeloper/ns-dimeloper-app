@@ -1,0 +1,9 @@
+@import "./app.common";
+@import "~nativescript-theme-core/scss/platforms/index.ios";
+
+.btn {
+  background: transparent;
+  border-width: 1;
+  border-color: dodgerblue;
+  color: dodgerblue;
+}
