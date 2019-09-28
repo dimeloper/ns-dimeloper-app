@@ -1,28 +1,35 @@
 @import '~nativescript-theme-core/scss/light';
-
 /* Here we can overwrite theme variables */
 @import "./theme/colors";
 
-$btn-color: $primary;
+$btn-color: $color-primary;
 
 @import '~nativescript-theme-core/scss/index';
 
 ActionBar {
-  background-color: $primary;
+  background-color: $color-primary;
   color: white;
 }
 
-.btn {
-  width: 100%;
-  padding: 10 10;
-  border-radius: 30%;
-  margin: 5 0;
+.form {
+  align-items: center;
+  height: 50%;
+  flex-direction: column;
 }
 
-.form-control {
-  border-bottom-color: dodgerblue;
-  border-bottom-width: 2;
-  padding: 5 10;
+.input-field {
+  width: 80%;
+
+  .label {
+    color: $color-primary;
+    font-weight: bold;
+  }
+
+  .input {
+    border-bottom-width: 2;
+    border-color: $color-primary;
+    width: 100%;
+  }
 }
 
 .drawer-container {
@@ -31,4 +38,11 @@ ActionBar {
   justify-content: center;
   align-items: center;
   padding: 20;
+}
+
+.btn.btn-flat {
+  background: $color-white;
+  border-color: $color-white;
+  border-width: 0;
+  color: $color-primary;
 }

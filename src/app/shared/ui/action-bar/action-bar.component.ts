@@ -9,7 +9,7 @@ declare var android;
 @Component({
   selector: 'ns-action-bar',
   templateUrl: './action-bar.component.html',
-  styleUrls: ['./action-bar.component.css']
+  styleUrls: ['./action-bar.component.scss']
 })
 export class ActionBarComponent {
   @Input() title: string;

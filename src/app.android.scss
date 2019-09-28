@@ -2,8 +2,8 @@
 @import "~nativescript-theme-core/scss/platforms/index.android";
 
 .btn {
-  background: $primary;
+  background: $color-primary;
   border-width: 1;
-  border-color: $primary;
+  border-color: $color-primary;
   color: white;
 }
