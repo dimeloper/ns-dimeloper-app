@@ -1,0 +1,12 @@
+@import "../../../theme/colors";
+
+.title {
+  color: $primary;
+  font-weight: bold;
+  text-align: center;
+  padding: 10;
+}
+
+.item-wrapper {
+  padding: 0 10 20 10;
+}

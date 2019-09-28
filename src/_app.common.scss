@@ -1,13 +1,16 @@
 @import '~nativescript-theme-core/scss/light';
 
 /* Here we can overwrite theme variables */
-$primary: #7c015d;
-$secondary: #2b0c72;
-$disabled: #ccc;
+@import "./theme/colors";
 
 $btn-color: $primary;
 
 @import '~nativescript-theme-core/scss/index';
+
+ActionBar {
+  background-color: $primary;
+  color: white;
+}
 
 .btn {
   width: 100%;

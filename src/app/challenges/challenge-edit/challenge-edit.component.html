@@ -1,12 +1,13 @@
-<ns-action-bar title="Edit Challenge" [hasMenu]="false"></ns-action-bar>
-<FlexboxLayout justifyContent="space-between">
-    <!--    <TextField-->
-    <!--            class="form-control"-->
-    <!--            hint="Challenge title"-->
-    <!--            [(ngModel)]="challengeDescription">-->
-    <!--    </TextField>-->
-    <!--    <Button class="btn"-->
-    <!--            (tap)="onSetChallenge()"-->
-    <!--            text="Add Challenge"></Button>-->
-    <Label class="title" text="The edit page" horizontalAlignment="center"></Label>
+<ns-action-bar [title]="isCreating ? 'Replace Challenge' : 'Edit Challenge'"
+               [hasMenu]="false"></ns-action-bar>
+<FlexboxLayout justifyContent="space-between" class="form">
+    <StackLayout class="input-field">
+        <Label class="label" text="Title"></Label>
+        <TextField class="input"></TextField>
+    </StackLayout>
+    <StackLayout class="input-field">
+        <Label class="label" text="Description"></Label>
+        <TextField class="input"></TextField>
+    </StackLayout>
+    <Button class="btn btn-primary" text="Save"></Button>
 </FlexboxLayout>

@@ -4,7 +4,7 @@ import { ModalDialogParams } from 'nativescript-angular';
 @Component({
   selector: 'ns-day-modal',
   templateUrl: './day-modal.component.html',
-  styleUrls: ['./day-modal.component.css']
+  styleUrls: ['./day-modal.component.scss']
 })
 export class DayModalComponent implements OnInit {
 

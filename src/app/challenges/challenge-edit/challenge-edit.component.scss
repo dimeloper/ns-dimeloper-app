@@ -1,0 +1,23 @@
+/* Add mobile styles for the component here.  */
+@import "../../../theme/colors";
+
+.form {
+  align-items: center;
+  height: 50%;
+  flex-direction: column;
+}
+
+.input-field {
+  width: 80%;
+
+  .label {
+    color: $primary;
+    font-weight: bold;
+  }
+
+  .input {
+    border-bottom-width: 2;
+    border-color: $primary;
+    width: 100%;
+  }
+}
