@@ -1,24 +1,9 @@
 /* Add mobile styles for the component here.  */
 @import "../../../theme/colors";
 
-FlexboxLayout {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+GridLayout {
+  background-image: url("res://mountains");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.btn {
-  width: 300;
-}
-
-.btn-success {
-  background: $color-success;
-  border-color: $color-success;
-  color: $color-white;
-}
-
-.btn-fail {
-  background: $color-fail;
-  border-color: $color-fail;
-  color: $color-white;
-}

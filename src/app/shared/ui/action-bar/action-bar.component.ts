@@ -41,8 +41,9 @@ export class ActionBarComponent {
     if (isAndroid) {
       const androidToolbar = this.page.actionBar.nativeView;
       const backButton = androidToolbar.getNavigationIcon();
+
       if (backButton) {
-        backButton.setColorFilter(android.graphics.Color.parseColor('#171717'),
+        backButton.setColorFilter(android.graphics.Color.parseColor('#ffffff'),
           (<any>android.graphics).PorterDuff.Mode.SRC_ATOP);
       }
     }

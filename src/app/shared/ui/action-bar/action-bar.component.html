@@ -5,7 +5,9 @@
                       android.systemIcon="ic_menu_back"
     ></NavigationButton>
     <NavigationButton *ngIf="osIsAndroid && hasMenu"
-                      icon="res://menu_black"
+                      icon="res://menu"
+                      width="20"
+                      height="20"
                       (tap)="onToggleMenu()"></NavigationButton>
     <ActionItem ios.position="left"
                 *ngIf="!osIsAndroid && hasMenu"
