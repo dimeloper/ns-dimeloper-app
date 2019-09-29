@@ -11,6 +11,8 @@ export class AuthComponent implements OnInit {
   form: FormGroup;
   emailControlIsValid = true;
   passwordControlIsValid = true;
+  isLogin = true;
+
   @ViewChild('emailEl', {static: false}) emailEl: ElementRef<TextField>;
   @ViewChild('passwordEl', {static: false}) passwordEl: ElementRef<TextField>;
 
@@ -39,13 +41,40 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit() {
-    this.emailEl.nativeElement.focus();
-    this.passwordEl.nativeElement.focus();
-    this.passwordEl.nativeElement.dismissSoftInput();
+    this.blurForm();
+
+    if (!this.form.valid) {
+      return;
+    }
 
     const email = this.form.get('email').value;
     const password = this.form.get('password').value;
+    this.form.reset();
+
+    this.emailControlIsValid = true;
+    this.passwordControlIsValid = true;
+
+    if (this.isLogin) {
+      console.log('User logged in ..');
+    } else {
+      console.log('User signed up ..');
+    }
+
     console.log(email, password);
+  }
+
+  onInputDone() {
+    this.blurForm();
+  }
+
+  onSwitch() {
+    this.isLogin = !this.isLogin;
+  }
+
+  private blurForm() {
+    this.emailEl.nativeElement.focus();
+    this.passwordEl.nativeElement.focus();
+    this.passwordEl.nativeElement.dismissSoftInput();
   }
 
 }

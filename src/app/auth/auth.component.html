@@ -1,4 +1,4 @@
-<ns-action-bar title="Login"
+<ns-action-bar [title]="isLogin ? 'Login': 'Register'"
                [showBackButton]="false"
                [hasMenu]="false"></ns-action-bar>
 <StackLayout class="form" [formGroup]="form">
@@ -6,14 +6,14 @@
         <Label class="label"
                text="Email"
                [ngClass]="{invalid: !emailControlIsValid}"></Label>
-        <TextField class="input"
-                   formControlName="email"
+        <TextField #emailEl
                    [autocorrect]="false"
                    autocapitalizationType="none"
+                   class="input"
+                   formControlName="email"
                    keyboardType="email"
                    required
-                   returnKeyType="next"
-                   #emailEl></TextField>
+                   returnKeyType="next"></TextField>
         <Label *ngIf="!emailControlIsValid"
                text="Please enter a valid email."></Label>
     </StackLayout>
@@ -21,20 +21,23 @@
         <Label class="label"
                text="Password"
                [ngClass]="{invalid: !passwordControlIsValid}"></Label>
-        <TextField class="input"
-                   formControlName="password"
+        <TextField #passwordEl
+                   (returnPress)="onInputDone()"
                    [autocorrect]="false"
                    [secure]="true"
                    autocapitalizationType="none"
+                   class="input"
+                   formControlName="password"
                    hint="Min. 6 characters."
                    required
-                   returnKeyType="done"
-                   #passwordEl></TextField>
+                   returnKeyType="done"></TextField>
         <Label *ngIf="!passwordControlIsValid"
                text="Must be at least 6 characters long."></Label>
     </StackLayout>
-    <Button text="Login"
+    <Button [text]="isLogin ? 'Login' : 'Register'"
             class="btn btn-primary btn-rounded-lg"
             [isEnabled]="form.valid"
             (tap)="onSubmit()"></Button>
+    <Button class="btn btn-flat btn-rounded-lg"
+            [text]="isLogin ? 'Register' : 'Login'" (tap)="onSwitch()"></Button>
 </StackLayout>
