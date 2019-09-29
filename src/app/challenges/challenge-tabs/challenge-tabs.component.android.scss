@@ -1,0 +1,7 @@
+/* Add mobile styles for the component here. - iOS  */
+@import "../../../theme/colors";
+
+TabView {
+  android-selected-tab-highlight-color: $color-primary;
+  android-tabs-position: bottom;
+}

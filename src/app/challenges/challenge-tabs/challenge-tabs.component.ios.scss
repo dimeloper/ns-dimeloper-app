@@ -1,0 +1,6 @@
+/* Add mobile styles for the component here. - iOS  */
+@import "../../../theme/colors";
+
+TabView {
+  selected-tab-text-color: $color-primary;
+}
