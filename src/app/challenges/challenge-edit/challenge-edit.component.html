@@ -3,11 +3,21 @@
 <FlexboxLayout justifyContent="space-between" class="form">
     <StackLayout class="input-field">
         <Label class="label" text="Title"></Label>
-        <TextField class="input"></TextField>
+        <TextField class="input"
+                   required
+                   returnKeyType="next"
+                   ngModel #titleCtrl="ngModel"></TextField>
+        <Label *ngIf="!titleCtrl.valid && titleCtrl.touched"
+               text="Please enter a valid title."></Label>
     </StackLayout>
     <StackLayout class="input-field">
         <Label class="label" text="Description"></Label>
-        <TextField class="input"></TextField>
+        <TextView class="input"
+                  required
+                  returnKeyType="done"
+                  ngModel #descCtrl="ngModel"></TextView>
+        <Label *ngIf="!descCtrl.valid && descCtrl.touched"
+               text="Please enter a valid description."></Label>
     </StackLayout>
     <Button class="btn btn-primary" text="Save"></Button>
 </FlexboxLayout>
