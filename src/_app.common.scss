@@ -33,6 +33,10 @@ ActionBar {
       color: $color-primary;
       font-family: 'Oswald', 'Oswald-Regular', 'Oswald-Bold';
       font-weight: bold;
+
+      &.invalid {
+        color: $color-fail;
+      }
     }
 
     .input {
@@ -62,4 +66,9 @@ ActionBar {
   border-color: $color-white;
   border-width: 0;
   color: $color-primary;
+}
+
+.ng-invalid.ng-touched {
+  border-bottom-color: $color-fail;
+  color: $color-fail;
 }
