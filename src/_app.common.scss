@@ -18,6 +18,7 @@ ActionBar {
 .h1 {
   color: $color-primary;
   font-weight: bold;
+  font-family: 'Oswald', 'Oswald-Regular', 'Oswald-Bold';
 }
 
 .form {
@@ -25,20 +26,21 @@ ActionBar {
   height: 50%;
   flex-direction: column;
   justify-content: center;
-}
 
-.input-field {
-  width: 80%;
+  .input-field {
+    width: 80%;
 
-  .label {
-    color: $color-primary;
-    font-weight: bold;
-  }
+    .label {
+      color: $color-primary;
+      font-family: 'Oswald', 'Oswald-Regular', 'Oswald-Bold';
+      font-weight: bold;
+    }
 
-  .input {
-    border-bottom-width: 2;
-    border-color: $color-primary;
-    width: 100%;
+    .input {
+      border-bottom-width: 2;
+      border-color: $color-primary;
+      width: 100%;
+    }
   }
 }
 
