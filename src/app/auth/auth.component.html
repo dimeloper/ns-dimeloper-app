@@ -1,9 +1,40 @@
 <ns-action-bar title="Login"
                [showBackButton]="false"
                [hasMenu]="false"></ns-action-bar>
-<StackLayout>
+<StackLayout class="form" [formGroup]="form">
+    <StackLayout class="input-field">
+        <Label class="label"
+               text="Email"
+               [ngClass]="{invalid: !emailControlIsValid}"></Label>
+        <TextField class="input"
+                   formControlName="email"
+                   [autocorrect]="false"
+                   autocapitalizationType="none"
+                   keyboardType="email"
+                   required
+                   returnKeyType="next"
+                   #emailEl></TextField>
+        <Label *ngIf="!emailControlIsValid"
+               text="Please enter a valid email."></Label>
+    </StackLayout>
+    <StackLayout class="input-field">
+        <Label class="label"
+               text="Password"
+               [ngClass]="{invalid: !passwordControlIsValid}"></Label>
+        <TextField class="input"
+                   formControlName="password"
+                   [autocorrect]="false"
+                   [secure]="true"
+                   autocapitalizationType="none"
+                   hint="Min. 6 characters."
+                   required
+                   returnKeyType="done"
+                   #passwordEl></TextField>
+        <Label *ngIf="!passwordControlIsValid"
+               text="Must be at least 6 characters long."></Label>
+    </StackLayout>
     <Button text="Login"
             class="btn btn-primary btn-rounded-lg"
-            nsRouterLink="/challenges"
-            [clearHistory]="true"></Button>
+            [isEnabled]="form.valid"
+            (tap)="onSubmit()"></Button>
 </StackLayout>

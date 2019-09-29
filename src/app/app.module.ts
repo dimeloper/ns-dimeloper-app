@@ -10,6 +10,7 @@ import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angul
 import { DayModalComponent } from './challenges/day-modal/day-modal.component';
 import { SharedModule } from '~/app/shared/shared.module';
 import { ChallengeActionsModule } from '~/app/challenges/challenge-actions/challenge-actions.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -24,7 +25,9 @@ import { ChallengeActionsModule } from '~/app/challenges/challenge-actions/chall
     NativeScriptModule,
     NativeScriptFormsModule,
     NativeScriptUISideDrawerModule,
-    SharedModule
+    ReactiveFormsModule,
+    SharedModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,

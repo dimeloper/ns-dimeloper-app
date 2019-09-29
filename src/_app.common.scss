@@ -42,7 +42,13 @@ ActionBar {
     .input {
       border-bottom-width: 2;
       border-color: $color-primary;
+      color: $color-black;
       width: 100%;
+
+      &.ng-invalid.ng-touched {
+        border-bottom-color: $color-fail;
+        color: $color-fail;
+      }
     }
   }
 }
@@ -66,9 +72,4 @@ ActionBar {
   border-color: $color-white;
   border-width: 0;
   color: $color-primary;
-}
-
-.ng-invalid.ng-touched {
-  border-bottom-color: $color-fail;
-  color: $color-fail;
 }
