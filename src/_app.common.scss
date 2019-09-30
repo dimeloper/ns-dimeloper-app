@@ -21,6 +21,12 @@ ActionBar {
   font-family: 'Oswald', 'Oswald-Regular', 'Oswald-Bold';
 }
 
+.flex-centered {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .form {
   align-items: center;
   flex-direction: column;

@@ -21,20 +21,20 @@
 <ScrollView>
     <FlexboxLayout class="page">
 
-        <StackLayout *ngIf="!currentChallenge">
+        <FlexboxLayout class="flex-centered" *ngIf="!currentChallenge">
             <Label text="No challenge found!"></Label>
-            <Button class="btn btn-primary btn-rounded-lg"
+            <Button class="btn btn-primary"
                     text="Create One!"
                     nsRouterLink="/challenges/replace"
                     pageTransition="slideLeft"></Button>
-        </StackLayout>
+        </FlexboxLayout>
 
         <StackLayout *ngIf="currentChallenge">
             <Label class="h1 text-center"
-                   text="Take a walk every day">
+                   [text]="currentChallenge.title">
             </Label>
             <Label class="body text-center"
-                   text="Walk for at least 20 minutes on every day of the week">
+                   [text]="currentChallenge.description">
             </Label>
         </StackLayout>
 
