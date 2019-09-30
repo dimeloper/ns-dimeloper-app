@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DayStatus } from '~/app/challenges/day.model';
 
 @Component({
   selector: 'ns-challenge-actions',
@@ -7,10 +8,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ChallengeActionsComponent {
   @Input() cancelText = 'Cancel';
-  @Output() actionSelected = new EventEmitter<'complete' | 'fail' | 'cancel'>();
+  @Output() actionSelected = new EventEmitter<DayStatus>();
 
   onAction(action: 'complete' | 'fail' | 'cancel') {
-    this.actionSelected.emit(action);
+    let status = DayStatus.Open;
+    if (action === 'complete') {
+      status = DayStatus.Completed;
+    } else if (action === 'fail') {
+      status = DayStatus.Failed
+    }
+
+    this.actionSelected.emit(status);
   }
 
 }

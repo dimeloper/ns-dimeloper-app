@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChallengeService } from '~/app/challenges/challenge.service';
-import { Day } from '~/app/challenges/day.model';
+import { Day, DayStatus } from '~/app/challenges/day.model';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -29,7 +29,7 @@ export class TodayComponent implements OnInit, OnDestroy {
     this.subSink.unsubscribe();
   }
 
-  onChallengeActionSelected(action: 'complete' | 'fail' | 'cancel') {
-    console.log(action);
+  onChallengeActionSelected(action: DayStatus) {
+    this.challengeService.updateDayStatus(this.currentDay.dayInMonth, action);
   }
 }
