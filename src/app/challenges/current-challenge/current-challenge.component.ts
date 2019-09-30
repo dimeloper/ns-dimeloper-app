@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { ModalDialogService } from 'nativescript-angular';
 import { DayModalComponent } from '~/app/challenges/day-modal/day-modal.component';
 import { UiService } from '~/app/shared/ui/ui.service';
+import { ChallengeService } from '~/app/challenges/challenge.service';
+import { Challenge } from '~/app/challenges/challenge.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ns-current-challenge',
@@ -10,29 +13,29 @@ import { UiService } from '~/app/shared/ui/ui.service';
     './current-challenge.component.scss'],
   moduleId: module.id
 })
-export class CurrentChallengeComponent implements OnInit {
+export class CurrentChallengeComponent implements OnInit, OnDestroy {
   weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  days: { dayInMonth: number, dayInWeek: number }[];
+  currentChallenge: Challenge = null;
   private currentMonth: number;
   private currentYear: number;
+  private subSink: Subscription;
 
-  constructor(private modalDialog: ModalDialogService,
+  constructor(private challengeService: ChallengeService,
+              private modalDialog: ModalDialogService,
               private uiService: UiService,
               private vcRef: ViewContainerRef) {
 
   }
 
   ngOnInit(): void {
-    this.currentYear = new Date().getFullYear();
-    this.currentMonth = new Date().getMonth();
-    const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
-    this.days = [];
+    this.subSink = this.challengeService.currentChallenge
+      .subscribe(challenge => {
+        this.currentChallenge = challenge;
+      });
+  }
 
-    for (let i = 1; i < daysInMonth + 1; i++) {
-      const date = new Date(this.currentYear, this.currentMonth, i);
-      const dayInWeek = date.getDay();
-      this.days.push({dayInMonth: i, dayInWeek});
-    }
+  ngOnDestroy(): void {
+    this.subSink.unsubscribe();
   }
 
   getRow(index: number, day: { dayInMonth: number, dayInWeek: number }) {

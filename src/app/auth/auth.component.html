@@ -34,9 +34,10 @@
         <Label *ngIf="!passwordControlIsValid"
                text="Must be at least 6 characters long."></Label>
     </StackLayout>
+    <!-- @TODO bring this back -> [isEnabled]="form.valid" -->
     <Button [text]="isLogin ? 'Login' : 'Register'"
             class="btn btn-primary btn-rounded-lg"
-            [isEnabled]="form.valid"
+
             (tap)="onSubmit()"></Button>
     <Button class="btn btn-flat btn-rounded-lg"
             [text]="isLogin ? 'Register' : 'Login'" (tap)="onSwitch()"></Button>

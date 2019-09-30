@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TextField } from 'tns-core-modules/ui/text-field';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ns-auth',
@@ -16,7 +17,7 @@ export class AuthComponent implements OnInit {
   @ViewChild('emailEl', {static: false}) emailEl: ElementRef<TextField>;
   @ViewChild('passwordEl', {static: false}) passwordEl: ElementRef<TextField>;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -43,9 +44,10 @@ export class AuthComponent implements OnInit {
   onSubmit() {
     this.blurForm();
 
-    if (!this.form.valid) {
-      return;
-    }
+    // @TODO Bring this back
+    // if (!this.form.valid) {
+    //   return;
+    // }
 
     const email = this.form.get('email').value;
     const password = this.form.get('password').value;
@@ -61,6 +63,8 @@ export class AuthComponent implements OnInit {
     }
 
     console.log(email, password);
+
+    this.router.navigate(['/challenges']);
   }
 
   onInputDone() {

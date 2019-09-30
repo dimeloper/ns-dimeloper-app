@@ -21,7 +21,7 @@ import { ChallengeActionsModule } from '~/app/challenges/challenge-actions/chall
   ],
   schemas: [
     NO_ERRORS_SCHEMA
-  ]
+  ],
 })
 export class ChallengesModule {
 }
