@@ -8,7 +8,8 @@
         <TextField class="input"
                    required
                    returnKeyType="next"
-                   ngModel #titleCtrl="ngModel"></TextField>
+                   [(ngModel)]="title"
+                   #titleCtrl="ngModel"></TextField>
         <Label *ngIf="!titleCtrl.valid && titleCtrl.touched"
                text="Please enter a valid title."></Label>
     </StackLayout>
@@ -19,7 +20,8 @@
         <TextView class="input"
                   required
                   returnKeyType="done"
-                  ngModel #descCtrl="ngModel"></TextView>
+                  [(ngModel)]="description"
+                  #descCtrl="ngModel"></TextView>
         <Label *ngIf="!descCtrl.valid && descCtrl.touched"
                text="Please enter a valid description."></Label>
     </StackLayout>

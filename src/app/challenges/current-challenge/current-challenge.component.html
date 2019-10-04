@@ -8,7 +8,8 @@
                android:fontSize="24"
                text="&#xf0fe;"></Label>
     </ActionItem>
-    <ActionItem ios.position="right"
+    <ActionItem *ngIf="currentChallenge"
+                ios.position="right"
                 android.position="actionBar"
                 nsRouterLink="/challenges/edit"
                 pageTransition="slideLeft">

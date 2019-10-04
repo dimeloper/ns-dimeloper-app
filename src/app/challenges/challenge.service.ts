@@ -21,6 +21,16 @@ export class ChallengeService {
     this._currentChallenge.next(newChallenge);
   }
 
+  updateChallenge(title: string, description: string) {
+    this._currentChallenge.pipe(
+      take(1)
+    ).subscribe(challenge => {
+      const updatedChallenge = new Challenge(title, description, challenge.year, challenge.month, challenge.days);
+      // Send this to server
+      this._currentChallenge.next(updatedChallenge);
+    });
+  }
+
   get currentChallenge() {
     return this._currentChallenge.asObservable();
   }
