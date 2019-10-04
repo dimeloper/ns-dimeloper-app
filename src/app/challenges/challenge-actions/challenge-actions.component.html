@@ -3,6 +3,7 @@
             height="60"
             text="Completed"
             *ngIf="action !== 'complete'"
+            [isEnabled]="!done"
             (tap)="onAction('complete')"></Button>
     <StackLayout class="btn btn-success btn-rounded-lg"
                  height="60"
@@ -15,6 +16,7 @@
             height="60"
             text="Failed"
             *ngIf="action !== 'fail'"
+            [isEnabled]="!done"
             (tap)="onAction('fail')"></Button>
     <StackLayout class="btn btn-fail btn-rounded-lg"
                  height="60"

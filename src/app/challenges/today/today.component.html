@@ -12,5 +12,6 @@
 <FlexboxLayout class="flex-centered" *ngIf="currentDay">
     <Label class="h1" [text]="currentDay.date | date"></Label>
     <ns-challenge-actions (actionSelected)="onChallengeActionSelected($event)"
+                          [chosen]="getCurrentDayStatus()"
                           cancelText="Reset"></ns-challenge-actions>
 </FlexboxLayout>

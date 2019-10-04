@@ -14,13 +14,25 @@ FlexboxLayout {
 .btn-success {
   background: $color-success;
   border-color: $color-success;
+  border-width: 1;
   color: $color-white;
+
+  &:disabled {
+    background: $color-grey-dark;
+    border-color: $color-grey-dark;
+  }
 }
 
 .btn-fail {
   background: $color-fail;
   border-color: $color-fail;
+  border-width: 1;
   color: $color-white;
+
+  &:disabled {
+    background: $color-grey-dark;
+    border-color: $color-grey-dark;
+  }
 }
 
 .btn-alt {
