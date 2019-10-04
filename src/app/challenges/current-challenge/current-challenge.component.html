@@ -45,9 +45,10 @@
                    [text]="weekDay" row="0" [col]="i"></Label>
             <FlexboxLayout class="day"
                            *ngFor="let day of currentChallenge.days; let i = index"
+                           [ngClass]="{'not-settable': !getIsSettable(day.dayInMonth)}"
                            [row]="getRow(i, day)"
                            [col]="day.dayInWeek"
-                           (tap)="onChangeStatus()">
+                           (tap)="onChangeStatus(day)">
                 <Label [text]="day.dayInMonth"></Label>
             </FlexboxLayout>
         </GridLayout>

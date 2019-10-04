@@ -5,6 +5,7 @@ import { UiService } from '~/app/shared/ui/ui.service';
 import { ChallengeService } from '~/app/challenges/challenge.service';
 import { Challenge } from '~/app/challenges/challenge.model';
 import { Subscription } from 'rxjs';
+import { Day } from '~/app/challenges/day.model';
 
 @Component({
   selector: 'ns-current-challenge',
@@ -36,6 +37,10 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
     this.subSink.unsubscribe();
   }
 
+  getIsSettable(dayInMonth: number) {
+    return dayInMonth <= new Date().getDate();
+  }
+
   getRow(index: number, day: { dayInMonth: number, dayInWeek: number }) {
     const startRow = 1;
     const weekRow = Math.floor(index / 7);
@@ -49,14 +54,18 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
     return startRow + weekRow + irregularRow;
   }
 
-  onChangeStatus() {
+  onChangeStatus(day: Day) {
+    if (!this.getIsSettable(day.dayInMonth)) {
+      return;
+    }
+
     this.modalDialog.showModal(DayModalComponent, {
       fullscreen: true,
       viewContainerRef: this.uiService.getRootVCRef()
         ? this.uiService.getRootVCRef()
         : this.vcRef,
       context: {
-        date: new Date()
+        date: day.date
       }
     }).then((action: string) => {
       console.log(action);
