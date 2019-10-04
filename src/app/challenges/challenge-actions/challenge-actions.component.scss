@@ -22,3 +22,25 @@ FlexboxLayout {
   border-color: $color-fail;
   color: $color-white;
 }
+
+.btn-alt {
+  font-size: 30;
+  margin-top: 15;
+}
+
+.animate-slide-up {
+  animation-name: slide-up;
+  animation-iteration-count: 1;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(30);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
