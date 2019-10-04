@@ -5,7 +5,7 @@ import { UiService } from '~/app/shared/ui/ui.service';
 import { ChallengeService } from '~/app/challenges/challenge.service';
 import { Challenge } from '~/app/challenges/challenge.model';
 import { Subscription } from 'rxjs';
-import { Day } from '~/app/challenges/day.model';
+import { Day, DayStatus } from '~/app/challenges/day.model';
 
 @Component({
   selector: 'ns-current-challenge',
@@ -67,8 +67,8 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
       context: {
         date: day.date
       }
-    }).then((action: string) => {
-      console.log(action);
+    }).then((status: DayStatus) => {
+      this.challengeService.updateDayStatus(day.dayInMonth, status);
     });
   }
 }
