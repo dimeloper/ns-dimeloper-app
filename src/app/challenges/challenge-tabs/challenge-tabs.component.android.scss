@@ -1,5 +1,6 @@
 /* Add mobile styles for the component here. - iOS  */
 @import "../../../theme/colors";
+@import "challenge-tabs.component.common";
 
 TabView {
   android-selected-tab-highlight-color: $color-primary;

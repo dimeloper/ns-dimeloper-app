@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Challenge } from '~/app/challenges/challenge.model';
-import { DayStatus } from '~/app/challenges/day.model';
-import { take } from 'rxjs/internal/operators';
+import { Day, DayStatus } from '~/app/challenges/day.model';
+import { take, tap } from 'rxjs/internal/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export class ChallengeService {
   private _currentChallenge = new BehaviorSubject<Challenge>(null);
+  private firebaseUrl = 'https://REPLACE-WITH-FIREBASE-APP-ID.firebaseio.com/challenge.json';
+
+  constructor(private httpClient: HttpClient) {
+  }
 
   createNewChallenge(title: string, description: string) {
     const newChallenge = new Challenge(
@@ -16,9 +21,7 @@ export class ChallengeService {
       new Date().getMonth()
     );
 
-    // Save to server
-
-    this._currentChallenge.next(newChallenge);
+    this.syncChallengeToServer(newChallenge);
   }
 
   updateChallenge(title: string, description: string) {
@@ -26,13 +29,27 @@ export class ChallengeService {
       take(1)
     ).subscribe(challenge => {
       const updatedChallenge = new Challenge(title, description, challenge.year, challenge.month, challenge.days);
-      // Send this to server
-      this._currentChallenge.next(updatedChallenge);
+
+      this.syncChallengeToServer(updatedChallenge);
     });
   }
 
   get currentChallenge() {
     return this._currentChallenge.asObservable();
+  }
+
+  fetchCurrentChallenge() {
+    return this.httpClient.get<{ title: string, description: string, month: number, year: number, _days: Day[] }>(this.firebaseUrl)
+      .pipe(
+        tap(resData => {
+          if (resData) {
+            const loadedChallenge = new Challenge(
+              resData.title, resData.title, resData.month, resData.year, resData._days
+            );
+            this._currentChallenge.next(loadedChallenge);
+          }
+        })
+      );
   }
 
   updateDayStatus(dayInMonth: number, status: DayStatus) {
@@ -47,9 +64,17 @@ export class ChallengeService {
         .findIndex(d => d.dayInMonth === dayInMonth);
 
       challenge.days[dayIndex].status = status;
-      this._currentChallenge.next(challenge);
-      console.log(challenge.days[dayIndex]);
-      // Save this to server
+
+      this.syncChallengeToServer(challenge);
     });
+  }
+
+  private syncChallengeToServer(challenge: Challenge) {
+    return this.httpClient.put(this.firebaseUrl, challenge)
+      .pipe(take(1))
+      .subscribe(response => {
+        console.log(response);
+        this._currentChallenge.next(challenge);
+      })
   }
 }
