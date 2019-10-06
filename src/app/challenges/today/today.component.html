@@ -2,8 +2,8 @@
                [showBackButton]="false"></ns-action-bar>
 
 <FlexboxLayout class="flex-centered" *ngIf="!currentDay">
-    <Label text="No challenge found!"></Label>
-    <Button class="btn btn-primary"
+    <Label class="h1" text="No challenge found!"></Label>
+    <Button class="btn btn-primary btn-rounded-lg"
             text="Create One!"
             nsRouterLink="/challenges/replace"
             pageTransition="slideLeft"></Button>

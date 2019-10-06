@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, of, Subscription } from 'rxjs';
 import { Challenge } from '~/app/challenges/challenge.model';
 import { Day, DayStatus } from '~/app/challenges/day.model';
 import { switchMap, take, tap } from 'rxjs/internal/operators';
@@ -7,11 +7,21 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '~/app/auth/auth.service';
 
 @Injectable({providedIn: 'root'})
-export class ChallengeService {
+export class ChallengeService implements OnDestroy {
   private _currentChallenge = new BehaviorSubject<Challenge>(null);
-  private firebaseUrl = 'https://REPLACE-WITH-FIREBASE-APP-ID.firebaseio.com/challenge.json';
+  private firebaseUrl = 'https://REPLACE-WITH-FIREBASE-APP-ID.firebaseio.com/challenge/';
+  private subSink: Subscription = new Subscription();
 
   constructor(private authService: AuthService, private httpClient: HttpClient) {
+    this.subSink = this.authService.user.subscribe(user => {
+      if (!user) {
+        this._currentChallenge.next(null);
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subSink.unsubscribe();
   }
 
   createNewChallenge(title: string, description: string) {
@@ -47,7 +57,8 @@ export class ChallengeService {
           return of(null);
         }
         return this.httpClient
-          .get<{ title: string, description: string, month: number, year: number, _days: Day[] }>(this.firebaseUrl + currentUser.token);
+          .get<{ title: string, description: string, month: number, year: number, _days: Day[] }>
+          (this.firebaseUrl + currentUser.id + '.json?auth=' + currentUser.token);
       }),
       tap(resData => {
         if (resData) {
@@ -84,7 +95,7 @@ export class ChallengeService {
         if (!currentUser || !currentUser.isAuth) {
           return of(null);
         }
-        return this.httpClient.put(this.firebaseUrl + currentUser.token, challenge)
+        return this.httpClient.put(this.firebaseUrl + currentUser.id + '.json?auth=' + currentUser.token, challenge)
       })
     ).subscribe(response => {
       console.log(response);
