@@ -1,6 +1,8 @@
 # Dimeloper's NativeScript Demo App
 
-I will be developing this app to apply my learnings throughout my NativeScript learning journey.
+![Teaser](https://github.com/dimeloper/ns-dimeloper-app/blob/master/teaser.png)
+
+The app features a monthly challenge tracker.
 
 ## NativeScript Notes
 
