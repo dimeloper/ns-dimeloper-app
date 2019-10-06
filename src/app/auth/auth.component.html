@@ -35,7 +35,7 @@
                text="Must be at least 6 characters long."></Label>
     </StackLayout>
     <Button [text]="isLogin ? 'Login' : 'Register'"
-            [isEnabled]="form.valid"
+            [isEnabled]="emailControlIsValid"
             class="btn btn-primary btn-rounded-lg"
             *ngIf="!isLoading"
             (tap)="onSubmit()"></Button>
