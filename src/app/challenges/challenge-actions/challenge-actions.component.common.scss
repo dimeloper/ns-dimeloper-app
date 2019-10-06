@@ -8,7 +8,7 @@ FlexboxLayout {
 }
 
 .btn {
-  width: 300;
+  width: 200;
 }
 
 .btn-success {
@@ -20,6 +20,7 @@ FlexboxLayout {
   &:disabled {
     background: $color-grey-dark;
     border-color: $color-grey-dark;
+    color: $color-grey-light;
   }
 }
 
@@ -32,12 +33,12 @@ FlexboxLayout {
   &:disabled {
     background: $color-grey-dark;
     border-color: $color-grey-dark;
+    color: $color-grey-light;
   }
 }
 
 .btn-alt {
   font-size: 30;
-  margin-top: 15;
 }
 
 .animate-slide-up {

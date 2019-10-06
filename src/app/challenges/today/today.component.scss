@@ -1,8 +1,13 @@
 /* Add mobile styles for the component here.  */
 @import "../../../theme/colors";
 
-GridLayout {
+FlexboxLayout {
   background-image: url("res://mountains");
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 100;
+}
+
+.h1 {
+  color: $color-white;
 }

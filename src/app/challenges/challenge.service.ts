@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { Challenge } from '~/app/challenges/challenge.model';
 import { Day, DayStatus } from '~/app/challenges/day.model';
 import { switchMap, take, tap } from 'rxjs/internal/operators';
@@ -41,14 +41,18 @@ export class ChallengeService {
 
   fetchCurrentChallenge() {
     return this.authService.user.pipe(
+      take(1),
       switchMap(currentUser => {
+        if (!currentUser || !currentUser.isAuth) {
+          return of(null);
+        }
         return this.httpClient
           .get<{ title: string, description: string, month: number, year: number, _days: Day[] }>(this.firebaseUrl + currentUser.token);
       }),
       tap(resData => {
         if (resData) {
           const loadedChallenge = new Challenge(
-            resData.title, resData.title, resData.month, resData.year, resData._days
+            resData.title, resData.description, resData.month, resData.year, resData._days
           );
           this._currentChallenge.next(loadedChallenge);
         }
@@ -75,7 +79,11 @@ export class ChallengeService {
 
   private syncChallengeToServer(challenge: Challenge) {
     return this.authService.user.pipe(
+      take(1),
       switchMap(currentUser => {
+        if (!currentUser || !currentUser.isAuth) {
+          return of(null);
+        }
         return this.httpClient.put(this.firebaseUrl + currentUser.token, challenge)
       })
     ).subscribe(response => {

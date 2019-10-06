@@ -8,7 +8,7 @@
     <StackLayout class="btn btn-success btn-rounded-lg"
                  height="60"
                  *ngIf="action === 'complete'">
-        <Label text="&#xf00c;"
+        <Label class="status-icon" text="&#xf00c;"
                horizontalAlignment="center"
                class="fa btn-alt animate-slide-up"></Label>
     </StackLayout>
@@ -21,8 +21,9 @@
     <StackLayout class="btn btn-fail btn-rounded-lg"
                  height="60"
                  *ngIf="action === 'fail'">
-        <Label text="&#xf00d;"
+        <Label class="status-icon" text="&#xf00d;"
                horizontalAlignment="center"
+               verticalAlignment="center"
                class="fa btn-alt animate-slide-up"></Label>
     </StackLayout>
     <Button class="btn btn-flat btn-rounded-lg"

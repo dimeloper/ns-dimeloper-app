@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/internal/operators';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject, of, throwError } from 'rxjs';
 import { alert } from 'tns-core-modules/ui/dialogs';
 import { User } from '~/app/auth/user.model';
 import { RouterExtensions } from 'nativescript-angular';
+import { getString, hasKey, remove, setString } from 'tns-core-modules/application-settings';
 
 const FIREBASE_API_KEY = 'API-KEY'; // YOUR FIREBASE API KEY
 
@@ -18,9 +19,17 @@ interface AuthResponseData {
   registered?: boolean;
 }
 
+interface LoggedInUserData {
+  email: string;
+  id: string;
+  _token: string;
+  _tokenExpirationDate: string;
+}
+
 @Injectable({providedIn: 'root'})
 export class AuthService {
   private _user = new BehaviorSubject<User>(null);
+  private tokenExpirationTimer: number;
 
   constructor(private httpClient: HttpClient,
               private router: RouterExtensions) {
@@ -74,12 +83,46 @@ export class AuthService {
 
   logout() {
     this._user.next(null);
+    remove('userData');
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
     this.router.navigate(['/'], {clearHistory: true});
+  }
+
+  autoLogin() {
+    if (!hasKey('lastLoggedInUser')) {
+      return of(false);
+    }
+
+    const lastLoggedInUserData: LoggedInUserData = JSON.parse(getString('lastLoggedInUser'));
+    const loadedUser = new User(
+      lastLoggedInUserData.email,
+      lastLoggedInUserData.id,
+      lastLoggedInUserData._token,
+      new Date(lastLoggedInUserData._tokenExpirationDate)
+    );
+
+    if (loadedUser.isAuth) {
+      this._user.next(loadedUser);
+      this.autoLogout(loadedUser.timeToExpiry);
+      this.router.navigate(['/challenges'], {clearHistory: true});
+      return of(true);
+    }
+
+    return of(false);
+  }
+
+  autoLogout(expiryDuration: number) {
+    this.tokenExpirationTimer = setTimeout(this.logout.bind(this), expiryDuration);
   }
 
   private handleUserLogin(email: string, token: string, userId: string, expiresIn: number) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
+
+    setString('lastLoggedInUser', JSON.stringify(user));
+    this.autoLogout(user.timeToExpiry);
     this._user.next(user);
   }
 
