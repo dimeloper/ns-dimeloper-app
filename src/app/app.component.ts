@@ -11,6 +11,7 @@ import { UiService } from '~/app/shared/ui/ui.service';
 import { Subscription } from 'rxjs';
 import { RadSideDrawerComponent } from 'nativescript-ui-sidedrawer/angular';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+import { AuthService } from '~/app/auth/auth.service';
 
 @Component({
   selector: 'ns-app',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private drawerSub: Subscription;
   private drawer: RadSideDrawer;
 
-  constructor(private changeDetectionRef: ChangeDetectorRef,
+  constructor(private authService: AuthService,
+              private changeDetectionRef: ChangeDetectorRef,
               private uiService: UiService,
               private vcRef: ViewContainerRef) {
   }
@@ -49,5 +51,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onLogout() {
     this.uiService.toggleDrawer();
+    this.authService.logout();
   }
 }
